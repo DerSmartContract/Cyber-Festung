@@ -2,18 +2,28 @@
     "testuser": {
         "password": "$2b$12$7s6R/HNeYfFpUptUDEImXuCPKHH1Yf9IkDTxldil5fquNDrJeo0l2",
         "role": "user",
-        "locked": false
+        "locked": false,
+        "permissions": [
+            "write",
+            "read"
+        ]
     },
     "moderator1": {
         "password": "$2b$12$NVoEEtnKzWLR9QRNitFgqOsQEmRn/BmHJGD6HEDXCZFgBTW3OqeEm",
-        "role": "moderator"
+        "role": "moderator",
+        "locked": false,
+        "permissions": ["read", "manage_logs"]
     },
     "admin1": {
         "password": "$2b$12$9fPtpm5kBGwiwO93juyZn.nzD95Q70dQ1zTfPNtBz5AW3RMll2AZC",
-        "role": "admin"
+        "role": "admin",
+        "locked": false,
+        "permissions": ["read", "write", "change_settings"]
     },
     "superadmin": {
         "password": "$2b$12$4.sm5kDgrXYukOEgvegiIOBXBl0Yp3CBfUcwgUL8O13OFSzLZFaBW",
-        "role": "super-admin"
+        "role": "super-admin",
+        "locked": false,
+        "permissions": ["read", "write", "change_settings", "godmode"]
     }
 }

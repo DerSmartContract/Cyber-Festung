@@ -1,43 +1,52 @@
 import sqlite3
-import datetime
+import time
+
+LOG_DB = "security_logs.db"
 
 
 class SecurityLogger:
-    def __init__(self, db_name="security_logs.db"):
-        self.conn = sqlite3.connect(db_name)
-        self.create_table()
+    def __init__(self, db_file=LOG_DB):
+        self.db_file = db_file
+        self._init_db()
 
-    def create_table(self):
-        with self.conn:
-            self.conn.execute(
+    def _init_db(self):
+        """Erstellt oder aktualisiert die Log-Datenbank mit allen benötigten Spalten."""
+        with sqlite3.connect(self.db_file) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
                 """
                 CREATE TABLE IF NOT EXISTS logs (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp TEXT,
-                    username TEXT,
-                    action TEXT,
-                    status TEXT
+                    timestamp TEXT NOT NULL,
+                    username TEXT NOT NULL,
+                    action TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    ip_address TEXT NOT NULL
                 )
             """
             )
+            conn.commit()
 
-    def log_event(self, username, action, status="success"):
-        timestamp = datetime.datetime.now().isoformat()
-        with self.conn:
-            self.conn.execute(
-                """
-                INSERT INTO logs (timestamp, username, action, status)
-                VALUES (?, ?, ?, ?)
-            """,
-                (timestamp, username, action, status),
+    def log_event(self, username, action, status, ip_address="Unknown"):
+        """Speichert ein Sicherheitsereignis in der Datenbank."""
+        timestamp = time.strftime("%Y-%m-%dT%H:%M:%S")
+        with sqlite3.connect(self.db_file) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO logs (timestamp, username, action, status, ip_address) VALUES (?, ?, ?, ?, ?)",
+                (timestamp, username, action, status, ip_address),
             )
+            conn.commit()
 
-    def fetch_logs(self):
-        with self.conn:
-            return self.conn.execute("SELECT * FROM logs").fetchall()
+    def get_logs(self, limit=10):
+        """Holt die letzten Logs."""
+        with sqlite3.connect(self.db_file) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM logs ORDER BY id DESC LIMIT ?", (limit,))
+            return cursor.fetchall()
 
 
+# Datenbank aktualisieren, falls Datei direkt ausgeführt wird
 if __name__ == "__main__":
     logger = SecurityLogger()
-    logger.log_event("admin", "login_attempt")
-    print(logger.fetch_logs())
+    print("✅ Logs-Datenbank erfolgreich aktualisiert!")
