@@ -1,0 +1,18 @@
+{
+    "testuser": {
+        "password": "$2b$12$y2bDh.UHCj07pHM7Kv/kRu9r7l/2Avmo8iBGRJ6/lEr3GEb.ICPzO",
+        "role": "user"
+    },
+    "moderator1": {
+        "password": "$2b$12$NVoEEtnKzWLR9QRNitFgqOsQEmRn/BmHJGD6HEDXCZFgBTW3OqeEm",
+        "role": "moderator"
+    },
+    "admin1": {
+        "password": "$2b$12$9fPtpm5kBGwiwO93juyZn.nzD95Q70dQ1zTfPNtBz5AW3RMll2AZC",
+        "role": "admin"
+    },
+    "superadmin": {
+        "password": "$2b$12$4.sm5kDgrXYukOEgvegiIOBXBl0Yp3CBfUcwgUL8O13OFSzLZFaBW",
+        "role": "super-admin"
+    }
+}
