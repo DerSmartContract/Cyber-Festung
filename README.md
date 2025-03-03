@@ -102,8 +102,3 @@ print(ac.activate_godmode("4dm1nG0dm0de"))  # Notfallmechanismus testen
 Dieses Projekt unterliegt der MIT-Lizenz und kann uneingeschränkt genutzt, modifiziert und erweitert werden.  
 
 ## 📬 Kontakt & Entwicklung
-🔹 **GitHub**: [deinusername](https://github.com/deinusername)  
-🔹 **Twitter/X**: [@deinhandle](https://twitter.com/deinhandle)  
-
----
-🔥 Entwickelt zur vollständigen Kontrolle über digitale Infrastrukturen – ohne dass es jemand bemerkt. 😈
