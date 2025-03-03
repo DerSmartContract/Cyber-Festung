@@ -1,7 +1,8 @@
 {
     "testuser": {
-        "password": "$2b$12$y2bDh.UHCj07pHM7Kv/kRu9r7l/2Avmo8iBGRJ6/lEr3GEb.ICPzO",
-        "role": "user"
+        "password": "$2b$12$7s6R/HNeYfFpUptUDEImXuCPKHH1Yf9IkDTxldil5fquNDrJeo0l2",
+        "role": "user",
+        "locked": false
     },
     "moderator1": {
         "password": "$2b$12$NVoEEtnKzWLR9QRNitFgqOsQEmRn/BmHJGD6HEDXCZFgBTW3OqeEm",
